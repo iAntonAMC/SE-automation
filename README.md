@@ -43,3 +43,4 @@ Se desarrollará una API, empleando herramientas como Laravel para PHP y una pro
 Wikipedia - Universidad del Fútbol y Ciencias del Deporte - https://es.wikipedia.org/wiki/Universidad_del_Fútbol_y_Ciencias_del_Deporte
 Microsoft: SQL Server. Disponible en: https://www.microsoft.com/en-us/sql-server
 Oracle: JavaServer Pages (JSP) Overview. Disponible en: https://docs.oracle.com/javaee/6/tutorial/doc/bnagx.html
+Wikipedia - Tree Taversal - https://en.wikipedia.org/wiki/Tree_traversal#Post-order
