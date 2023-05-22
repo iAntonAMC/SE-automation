@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Editor lib CDN -->
-    <script src="static/ckeditor5-37.1.0/build/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
 
-    <!-- "Page" style -->
-    <link rel="stylesheet" type="text/css" href="static/stylesheets/editor-style.css">
-
-    <title>UFD EDITOR</title>
+    <title>PORTAL DOCS</title>
 </head>
-<body>
-    <!-- This is the container of the document editor -->
-    <div class="document-editor" id="document-editor">
-        <!-- Instance the toolbar above the editable body -->
-        <div class="document-editor__toolbar" id="document-editor__toolbar"></div>
-        <!-- This container is for styling the editable area -->
-        <div class="document-editor-container" id="document-editor-container">
-            <!-- Editable area -->
-            <div class="document-editor-container__editable" id="document-editor-container__editable">
-                <p>The initial editor data.</p>
-            </div>
-        </div>
-    </div>
-    <!-- Call the editor.js config -->
-    <script src="static/ckeditor5-37.1.0/config.js"></script>
 
+<body style="margin: 0;">
+    <nav class="top-orange-bar">
+        <span>UFD</span>
+    </nav>
+    <main>
+        <header>
+            <i></i><h1>Documentos Portal</h1>
+
+            <select>Seleccionar Calendario</select>
+        </header>
+        <section>
+            <div id="contenedor flotante">
+                <div>
+                    Tabla de lista de Documentos
+                </div>
+                <div>
+                    Aqui va el boton de CREAR
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
 </body>
+
 </html>
