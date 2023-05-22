@@ -3,7 +3,7 @@
     border-radius: var(--ck-border-radius);
 
     /* Set vertical boundaries for the document editor. */
-    max-height: 700px;
+    max-height: 92.5vh;
 
     /* This element is a flex container for easier rendering. */
     display: flex;
@@ -30,7 +30,7 @@
 /* Make the editable container look like the inside of a native word processor application. */
 .document-editor-container {
     padding: calc( 2 * var(--ck-spacing-large) );
-    background: var(--ck-color-base-foreground);
+    background: rgb(155, 155, 155);
 
     /* Make it possible to scroll the "page" of the edited content. */
     overflow-y: scroll;
@@ -49,7 +49,7 @@
     background: white;
 
     /* The "page" should cast a slight shadow (3D illusion). */
-    box-shadow: 0 0 5px hsla( 0,0%,0%,.1 );
+    box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.15);
 
     /* Center the "page". */
     margin: 0 auto;

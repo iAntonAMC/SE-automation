@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- General bar, scrollbar and table styles -->
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
+
+    <!-- Especific view styles -->
+    <style>
+        h2 {
+            margin-right: auto;
+            margin-left: 1%;
+            color: blue;
+        }
+    </style>
+
+    <title>DOC DETAILS</title>
+</head>
+
+<body>
+    <nav class="top-orange-bar">
+        <span class="ufd-text">UFD</span>
+    </nav>
+    <main>
+        <header class="title-calendar">
+            <h1><i>Ícono</i>Documentos Portal</h1>
+        </header>
+        <section>
+            <div class="float-container">
+                <h2>Información del Documento</h2>
+                <div class="title-checkbox">
+                    <input type="text" name="doc_title" id="doc_title" value="Título del Documento">
+                    <input type="checkbox" name="posted" id="posted"><label for="posted">Publicar</label>
+                </div>
+                <div class="doc-options">   
+                    <label for="doc_type">Tipo Documento</label>
+                    <select name="doc_type" id="doc_type">
+                        <option value="">Reglamentos</option>
+                        <option value="">Anuencia</option>
+                    </select>
+                    <label for="doc_level">Nivel</label>
+                    <select name="doc_level" id="doc_level">
+                        <option value="1">Preescolar</option>
+                        <option value="2">Primaria</option>
+                        <option value="3">Secundaria</option>
+                    </select>
+                    <label for="doc_calendar">Calendario</label>
+                    <select name="doc_calendar" id="doc_calendar">
+                        <option value="">Enero - Abril 2023</option>
+                        <option value="">Mayo - Agosto 2023</option>
+                    </select>
+                    <label for="doc_campus">Campus</label>
+                    <input type="radio" name="doc_campus" value="1">Campus Pachuca
+                    <input type="radio" name="doc_campus" value="2">Campus León
+                </div>
+                <Button>REDACTAR DOCUMENTO</Button>
+                <button>GUARDAR Y CONTINUAR</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
