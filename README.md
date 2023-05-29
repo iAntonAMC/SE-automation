@@ -32,17 +32,3 @@ Se desarrollará una API, empleando herramientas como Laravel para PHP y una pro
 11. Construir el archivo PDF al vuelo empleando la "plantilla" recuperada y la información necesaria para cada documento que se pueda prellenar
 12. Generar un URL instantáneo para poder acceder al PDF generado
 13. Devolver el JSON al portal de interesados en reinscripción con el URL del PDF generado para que pueda ser desplegado como lo hace actualmente.
-
-
-
-
-
-
-
-## Bibliografía 
-Wikipedia - Universidad del Fútbol y Ciencias del Deporte - https://es.wikipedia.org/wiki/Universidad_del_Fútbol_y_Ciencias_del_Deporte
-Microsoft: SQL Server. Disponible en: https://www.microsoft.com/en-us/sql-server
-Oracle: JavaServer Pages (JSP) Overview. Disponible en: https://docs.oracle.com/javaee/6/tutorial/doc/bnagx.html
-Wikipedia - Tree Taversal - https://en.wikipedia.org/wiki/Tree_traversal#Post-order
-CKEDOMdocumentation - https://cdn.ckeditor.com/#ckeditor5
-CKE DecopledEditor - https://ckeditor.com/docs/ckeditor5/latest/api/module_editor-decoupled_decouplededitor-DecoupledEditor.html
