@@ -8,6 +8,19 @@
 
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
 
+    <script>
+        function reqListener () {
+            var oReq = new XMLHttpRequest();
+            oReq.open("GET", "http://localhost:8000/docs/1");
+            oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
+            oReq.setRequestHeader("Accept", "aplication/json");
+            oReq.setRequestHeader("Content-type", "aplication/json");
+            oReq.withCredentials = true;
+            oReq.send();
+            console.log(oReq.responseText);
+        }
+    </script>
+
     <title>PORTAL DOCS</title>
 </head>
 
@@ -40,7 +53,7 @@
                     </table>
                 </div>
                 <div>
-                    <button> CREAR Documento</button>
+                    <button onclick="reqListener()">CREAR Documento</button>
                 </div>
             </div>
         </section>

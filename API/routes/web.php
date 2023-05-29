@@ -26,7 +26,7 @@ $router->get('/docs', function () use ($router) {
         $cnxn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $cnxn -> exec("SET CHARACTER SET UTF8");
 
-        $query = "SELECT * FROM documentos WHERE ID = 5";
+        $query = "SELECT * FROM documentos WHERE 1";
         $cursor = $cnxn -> prepare($query);
         $cursor -> execute([]);
         $results = $cursor -> fetchAll();
@@ -82,6 +82,11 @@ $router->get('/docs/{doc_id}', function ($doc_id) use ($router) {
     }
 }
 );
+
+
+
+
+
 
 
 
