@@ -9,8 +9,14 @@
 /* Initial API test:
     @return JSON
 */
-$router->get('/', function () use ($router) {
+$router->get('/', function () {
     return response()->json(['message' => 'API is Working!']);
+});
+
+//Temporal route for tests
+$router->get('/text', function () {
+    return response("Funcionó el Header", 200, ['Access-Control-Allow-Origin: http://127.0.0.1:666/'])
+        ->header('Access-Control-Allow-Origin', 'http://127.0.0.1:666');
 });
 
 
@@ -54,7 +60,7 @@ $router->get('/docs', function () use ($router) {
     @param $doc_id : int
     @return $response : JSON, HTTP code
 */
-$router->get('/docs/{doc_id}', function ($doc_id) use ($router) {
+$router->get('/docs/{doc_id}', function ($doc_id) {
     try {
         // Create the PDO instance.
         $cnxn = new PDO("mysql:host=localhost; port=3306; dbname=se_docs", "root", "");
