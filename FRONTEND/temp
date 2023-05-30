@@ -1,0 +1,6 @@
+// Se puede usar en caso de que XMLHT fallé
+async function texto() {
+    const response = await fetch("http://localhost:8000/text");
+    const jsonData = await response.text();
+    console.log(jsonData);
+}

@@ -9,9 +9,11 @@
     <!-- General bar, scrollbar and table styles -->
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
 
+    <script src="/static/js/save_doc.js"></script>
+
     <!-- Especific view styles -->
     <style>
-        h2 {
+        h3 {
             margin-right: auto;
             margin-left: 1%;
             color: blue;
@@ -30,17 +32,18 @@
             <h1><i>Ícono</i>Documentos Portal</h1>
         </header>
         <section>
+            <form action="">
             <div class="float-container">
-                <h2>Información del Documento</h2>
+                <h3>Información del Documento</h3>
                 <div class="title-checkbox">
                     <input type="text" name="doc_title" id="doc_title" value="Título del Documento">
                     <input type="checkbox" name="posted" id="posted"><label for="posted">Publicar</label>
                 </div>
-                <div class="doc-options">   
+                <div class="doc-options"> 
                     <label for="doc_type">Tipo Documento</label>
                     <select name="doc_type" id="doc_type">
-                        <option value="">Reglamentos</option>
-                        <option value="">Anuencia</option>
+                        <option value="2">Reglamentos</option>
+                        <option value="3">Anuencia</option>
                     </select>
                     <label for="doc_level">Nivel</label>
                     <select name="doc_level" id="doc_level">
@@ -54,12 +57,12 @@
                         <option value="">Mayo - Agosto 2023</option>
                     </select>
                     <label for="doc_campus">Campus</label>
-                    <input type="radio" name="doc_campus" value="1">Campus Pachuca
-                    <input type="radio" name="doc_campus" value="2">Campus León
+                    <input type="radio" name="doc_campus" id="doc_campus" value="1">Campus Pachuca
+                    <input type="radio" name="doc_campus" id="doc_campus" value="2">Campus León
                 </div>
-                <Button>REDACTAR DOCUMENTO</Button>
-                <button>GUARDAR Y CONTINUAR</button>
+                <input type="button" onclick="saveDoc()">GUARDAR Y CONTINUAR</input type="submit">
             </div>
+            </form>
         </section>
     </main>
     <footer>

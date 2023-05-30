@@ -8,19 +8,9 @@
 
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
 
-    <script>
-        async function texto() {
-            const response = await fetch("http://localhost:8000/text");
-            const jsonData = await response.text();
-            console.log(jsonData);
-        }
-        function req() {
-            const req = new XMLHttpRequest();
-            req.open("GET", "http://localhost:8000/text");
-            req.send();
-            console.log(req);
-        }
-    </script>
+    <!-- API URL -->
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <script type="text/javascript" src="/static/js/get_all_docs.js"></script>
 
     <title>PORTAL DOCS</title>
 </head>
@@ -38,13 +28,13 @@
         <section>
             <div class="float-container">
                 <div>
-                    <table>
-                        <thead>
+                    <table id="docs_table">
+                        <thead id="docs_table_head">
                             <th>Titulo del Documento</th>
                             <th>Tipo de Documento</th>
                             <th>Nivel</th>
                         </thead>
-                        <tbody>
+                        <tbody id="docs_table_body">
                             <tr>
                                 <td>Documento 1</td>
                                 <td>Reglamentos</td>
@@ -52,9 +42,12 @@
                             </tr>
                         </tbody>
                     </table>
+                    <script>
+                        document.body.onload = getDocs();
+                    </script>
                 </div>
                 <div>
-                    <button onclick="req()">CREAR Documento</button>
+                    <button onclick="window.location.href = '/views/new-doc.html';">CREAR Documento</button>
                 </div>
             </div>
         </section>
