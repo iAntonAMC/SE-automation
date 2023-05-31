@@ -32,3 +32,18 @@ Se desarrollará una API, empleando herramientas como Laravel para PHP y una pro
 11. Construir el archivo PDF al vuelo empleando la "plantilla" recuperada y la información necesaria para cada documento que se pueda prellenar
 12. Generar un URL instantáneo para poder acceder al PDF generado
 13. Devolver el JSON al portal de interesados en reinscripción con el URL del PDF generado para que pueda ser desplegado como lo hace actualmente.
+
+
+# Configuraciones
+- Instalar domPDF:
+    composer require dompdf/dompdf
+- Modificar archivo .env para usar DB:
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=se_docs
+    DB_USERNAME=root
+    DB_PASSWORD= 
+
+    CACHE_DRIVER=file
+    QUEUE_CONNECTION=sync

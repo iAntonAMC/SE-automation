@@ -7,9 +7,9 @@ CREATE TABLE catalogo (
 
 
 -- Table DOCUMENTOS it's similar to current table, however this one uses the 'CUERPO_DOCTO' column
-DROP TABLE IF EXISTS documentos;
-CREATE TABLE documentos (
-    ID_DOCTO INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+DROP TABLE IF EXISTS documents;
+CREATE TABLE documents (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     TIPO_DOCTO INTEGER NOT NULL,
     TITULO_DOCTO TEXT(200) NOT NULL,
     CUERPO_DOCTO TEXT NOT NULL,
@@ -24,6 +24,6 @@ CREATE TABLE documentos (
     FOREIGN KEY (TIPO_DOCTO) REFERENCES catalogo(TIPO_DOCTO)
 )ENGINE=INNODB;
 
-CREATE INDEX id_tipo ON documentos(ID_DOCTO, TIPO_DOCTO);
-CREATE INDEX id_titulo ON documentos(ID_DOCTO, TITULO_DOCTO);
-CREATE INDEX id_nivel_calendario ON documentos(ID_DOCTO, CVE_NIVEL, CVE_CALENDARIO);
+CREATE INDEX id_tipo ON documents(id, TIPO_DOCTO);
+CREATE INDEX id_titulo ON documents(id, TITULO_DOCTO);
+CREATE INDEX id_nivel_calendario ON documents(id, CVE_NIVEL, CVE_CALENDARIO);
