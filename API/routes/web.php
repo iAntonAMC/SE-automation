@@ -23,3 +23,5 @@ $router->post('/documentos/actualizar', ['uses' => 'DocumentsController@UpdateDo
 #DELETE ONE
 $router->delete('/documentos/{id}', ['uses' => 'DocumentsController@DeleteDocument']);
 
+#GET PDF BUILD
+$router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF']);

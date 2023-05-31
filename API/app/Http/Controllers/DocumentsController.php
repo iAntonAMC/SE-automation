@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Documents;
 use Illuminate\Http\Request;
 use Exception;
+use Dompdf\Dompdf;
 
 class DocumentsController extends Controller
 {
@@ -25,18 +26,20 @@ class DocumentsController extends Controller
     ****************************************/
     public function GetAllDocuments()
     {
-        try {
+        try
+        {
             $documentos = Documents::all();
 
             // Verify if $documents is not null
             if ($documentos == '[]') {
-                return response()->json(['Error!' => 'No docs where found in DB'], 404);
+                return response()->json(['Empty!' => 'No docs where found in DB'], 404);
             }
             else {
                 return response($documentos, 200);
             }
         }
-        catch (Exception $E) {
+        catch (Exception $E)
+        {
             return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
         }
     }
@@ -49,18 +52,20 @@ class DocumentsController extends Controller
     ****************************************/
     public function GetDocumentById($id)
     {
-        try {
+        try
+        {
             $document = Documents::all()->where('id', $id);
 
             // Verify if $documents is not null
             if ($document == '[]') {
-                return response()->json(['Error!' => 'No docs correspond to given ID'], 404);
+                return response()->json(['Empty!' => 'No docs correspond to given ID'], 404);
             }
             else {
                 return response($document, 200);
             }
         }
-        catch (Exception $E) {
+        catch (Exception $E)
+        {
             return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
         }
     }
@@ -73,7 +78,8 @@ class DocumentsController extends Controller
     ****************************************/
     public function CreateNewDocument(Request $request)
     {
-        try {
+        try
+        {
             $inserted = Documents::create(
                 [
                     'TIPO_DOCTO' => $request->TIPO_DOCTO,
@@ -87,15 +93,16 @@ class DocumentsController extends Controller
                 ]
             );
 
-            // Verify if Doc was successfully inserted
-            // if ($inserted == '1') {
-            //     return response()->json(['Success!' => 'New doc inserted into DB'], 200);
-            // }
-            // else {
-            //     return response()->json(['Error!' => 'Couldnt insert new doc into DB'], 400);
-            // }
+            //Verify if Doc was successfully inserted
+            if ($inserted) {
+                return response()->json(['Success!' => 'New doc inserted into DB'], 200);
+            }
+            else {
+                return response()->json(['Error!' => 'Couldnt insert new doc into DB'], 400);
+            }
         }
-        catch (Exception $E) {
+        catch (Exception $E)
+        {
             return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
         }
     }
@@ -108,7 +115,8 @@ class DocumentsController extends Controller
     ****************************************/
     public function UpdateDocument(Request $request)
     {
-        try {
+        try
+        {
             $updated = Documents::where('id', $request->id)->update(
                 [
                     'TIPO_DOCTO' => $request->TIPO_DOCTO,
@@ -130,7 +138,8 @@ class DocumentsController extends Controller
                 return response()->json(['Error!' => 'Couldnt update doc'], 400);
             }
         }
-        catch (Exception $E) {
+        catch (Exception $E)
+        {
             return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
         }
     }
@@ -143,7 +152,8 @@ class DocumentsController extends Controller
     ****************************************/
     public function DeleteDocument($id)
     {
-        try {
+        try
+        {
             if (Documents::where('id', $id)->delete())
             {
                 return response()->json(['Success!' => 'Doc successfully deleted'], 200);
@@ -151,6 +161,39 @@ class DocumentsController extends Controller
             else {
                 return response()->json(['Error!' => 'Couldnt delete doc from DB'], 400);
             }
+        }
+        catch (Exception $E) {
+            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+        }
+    }
+
+    /****************************************
+     * Build the PDF specifying the ID
+     *
+     * @param int $id
+     * @return callable $dompdf
+    ****************************************/
+    public function BuildPDF($id)
+    {
+        try
+        {
+            $title = Documents::all('TITULO_DOCTO')->where('id', $id);
+            $body = Documents::all('CUERPO_DOCTO')->where('id', $id);
+
+            $dompdf = new Dompdf();
+
+            // pass an array of options
+            $dompdf->getOptions()->set([]);
+
+            //Build the content body
+            $dompdf->loadHtml($body);
+
+            // (Optional) Setup the paper size and orientation
+            $dompdf->setPaper('A4', 'portrait');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+            return $dompdf->stream($title, ['Attachment' => 0, 'compress' => 0]);
         }
         catch (Exception $E) {
             return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
