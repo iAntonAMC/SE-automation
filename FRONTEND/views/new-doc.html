@@ -9,7 +9,8 @@
     <!-- General bar, scrollbar and table styles -->
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
 
-    <script src="/static/js/save_doc.js"></script>
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <script type="text/javascript" src="/static/js/save_doc.js"></script>
 
     <!-- Especific view styles -->
     <style>
@@ -60,7 +61,7 @@
                     <input type="radio" name="doc_campus" id="doc_campus" value="1">Campus Pachuca
                     <input type="radio" name="doc_campus" id="doc_campus" value="2">Campus León
                 </div>
-                <input type="button" onclick="saveDoc()">GUARDAR Y CONTINUAR</input type="submit">
+                <button onclick="saveDoc()">GUARDAR Y CONTINUAR</button>
             </div>
             </form>
         </section>
