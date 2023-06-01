@@ -6,7 +6,7 @@ CREATE TABLE catalogo (
 )ENGINE=INNODB;
 
 
--- Table DOCUMENTOS it's similar to current table, however this one uses the 'CUERPO_DOCTO' column
+-- Table DOCUMENTS it's similar to current table, however this one uses the 'CUERPO_DOCTO' column
 DROP TABLE IF EXISTS documents;
 CREATE TABLE documents (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,

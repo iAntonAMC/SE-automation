@@ -168,7 +168,7 @@ class DocumentsController extends Controller
     }
 
     /****************************************
-     * Build the PDF specifying the ID
+     * Build the PDF file specifying the $id
      *
      * @param int $id
      * @return callable $dompdf
@@ -177,23 +177,23 @@ class DocumentsController extends Controller
     {
         try
         {
-            $title = Documents::all('TITULO_DOCTO')->where('id', $id);
-            $body = Documents::all('CUERPO_DOCTO')->where('id', $id);
+            $document = Documents::find($id);
+            //print_r($document["CUERPO_DOCTO"]);
+            $body = $document["CUERPO_DOCTO"];
 
             $dompdf = new Dompdf();
 
             // pass an array of options
             $dompdf->getOptions()->set([]);
-
             //Build the content body
             $dompdf->loadHtml($body);
-
             // (Optional) Setup the paper size and orientation
             $dompdf->setPaper('A4', 'portrait');
-
             // Render the HTML as PDF
             $dompdf->render();
-            return $dompdf->stream($title, ['Attachment' => 0, 'compress' => 0]);
+
+            return $dompdf->stream("Documento.pdf", ['Attachment' => 0, 'compress' => 0]);
+            //return $body;
         }
         catch (Exception $E) {
             return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
