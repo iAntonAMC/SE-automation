@@ -24,11 +24,18 @@ body {
     align-items: center;
 }
 
-.doc-title {
+.new-title {
+    display: flex;
     color: #efefef;
     margin-left: 34%;
     font-weight: bold;
     font-size: small;
+}
+
+.save-btn {
+    display: flex;
+    margin-left: auto;
+    border-radius: 10%;
 }
 
 /* The title and calendar area */
@@ -41,7 +48,16 @@ body {
     justify-content: space-between;
 }
 
-/* The main area container */
+/* The options sections */
+.options-container {
+    display: flex;
+    margin: 0;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* The centered area container */
 .float-container {
     display: flex;
     background-color: #fdfdfd;

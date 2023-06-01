@@ -1,15 +1,16 @@
+
 function getDocs() {
-    const req = new XMLHttpRequest();
-    req.open("GET", URL + "docs");
-    req.send();
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", URL + "documentos");
+    xhr.send();
 
     // Maneja la respuesta obtenida del request
-    req.onload = () => {
-        const response = req.responseText;
+    xhr.onload = () => {
+        const response = xhr.responseText;
         const docs = JSON.parse(response);
         console.log(docs);
 
-        if (req.status == 200)
+        if (xhr.status == 200)
         {
             const tbody = document.getElementById("docs_table_body");
             for(let i = 0; i<docs.length; i++)
@@ -30,12 +31,12 @@ function getDocs() {
                 tr.appendChild(td_tipo);
                 tr.appendChild(td_nivel);
 
-                // // Se crean los campos de detalles por cada objeto del array
-                // var td_ver = document.createElement("td");
-                // var td_put = document.createElement("td");
-                // var td_borrar = document.createElement("td");
+                // Se crean los campos de detalles por cada objeto del array
+                var td_ver = document.createElement("td");
+                var td_put = document.createElement("td");
+                var td_borrar = document.createElement("td");
 
-                // // Cada campó redirige a una página HTML pasando el id_contacto como parámetro
+                // // Cada campo redirige a una página HTML pasando el id_contacto como parámetro
                 // td_ver.innerHTML = "<a href = 'get_one.html?" + docs[i].id_contacto + "'> ⨀ Detalles </a>";
                 // td_put.innerHTML = "<a href = 'put_one.html?" + docs[i].id_contacto + "'> ⨁ Actualizar </a>";
                 // td_borrar.innerHTML = "<a href = 'delete.html?" + docs[i].id_contacto + "'> ⨂ Borrar </a>";
