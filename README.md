@@ -1,4 +1,4 @@
-# Proyecto Estadía: Automatización del llenado de formatos para Reinscripciones
+# Proyecto Estadía: Automatización del llenado de formatos para Reinscripciones UFD
 
 
 ## Antecedentes
@@ -36,14 +36,43 @@ Se desarrollará una API, empleando herramientas como Laravel para PHP y una pro
 
 # Configuraciones
 - Instalar domPDF:
+
     composer require dompdf/dompdf
-- Modificar archivo .env para usar DB:
+
+- Estructura de la tabla empleada en la base de datos (MySQL):
+
+    DROP TABLE IF EXISTS documents;
+    CREATE TABLE documents (
+        id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        TIPO_DOCTO INTEGER NOT NULL,
+        TITULO_DOCTO TEXT(200) NOT NULL,
+        CUERPO_DOCTO TEXT NOT NULL,
+        PUBLICAR VARCHAR(2) NOT NULL,
+        CVE_NIVEL INTEGER NOT NULL,
+        CVE_CALENDARIO TEXT(100) NOT NULL,
+        CAMPUS INTEGER NOT NULL,
+        FECHA_REGISTRO TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        AUTOR_REGISTRO VARCHAR(10) NOT NULL,
+        FECHA_MODIFICACION DATE DEFAULT NULL,
+        AUTOR_MODIFICACION VARCHAR(10) DEFAULT NULL
+    )ENGINE=INNODB;
+
+    CREATE INDEX id_tipo ON documents(id, TIPO_DOCTO);
+    CREATE INDEX id_titulo ON documents(id, TITULO_DOCTO);
+    CREATE INDEX id_nivel_calendario ON documents(id, CVE_NIVEL, CVE_CALENDARIO)
+
+- Modificar archivo .env para la integración con la base de datos:
+
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
     DB_DATABASE=se_docs
     DB_USERNAME=root
     DB_PASSWORD= 
-
     CACHE_DRIVER=file
     QUEUE_CONNECTION=sync
+
+---
+# URLS
+### [Lumen Docs](https://lumen.laravel.com/docs)
+---
