@@ -75,4 +75,5 @@ Se desarrollará una API, empleando herramientas como Laravel para PHP y una pro
 ---
 # URLS
 ### [Lumen Docs](https://lumen.laravel.com/docs)
+### [CKEditor Overview](https://ckeditor.com/docs/ckeditor5/latest/framework/index.html)
 ---
