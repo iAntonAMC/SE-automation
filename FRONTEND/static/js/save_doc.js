@@ -27,7 +27,7 @@ function saveDoc() {
 
     console.log(JSON.stringify(documento));
 
-    xhr.send();
+    xhr.send(JSON.stringify(documento));
 
     xhr.onload = () => {
         const response = xhr.responseText;
