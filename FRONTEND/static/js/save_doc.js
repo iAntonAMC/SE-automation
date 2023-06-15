@@ -3,8 +3,8 @@ function saveDoc() {
 
     xhr.open("POST", URL + "documentos");
 
-    // xhr.setRequestHeader("Accept", "aplication/json");
-    // xhr.setRequestHeader("Content-type", "aplication/json");
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-type", "application/json");
 
     // Get form values to save
     var doc_type = document.getElementById("doc_type").value;
