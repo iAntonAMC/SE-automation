@@ -75,10 +75,10 @@ import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 class Editor extends DecoupledDocumentEditor {}
 
 // Plugins to include in the build.
-// Plugins to include in the build.
 Editor.builtinPlugins = [
 	Alignment,
 	AutoImage,
+	Autoformat,
 	AutoLink,
 	Autosave,
 	BlockQuote,
@@ -121,7 +121,6 @@ Editor.builtinPlugins = [
 	PasteFromOffice,
 	RemoveFormat,
 	SelectAll,
-	SimpleUploadAdapter,
 	SourceEditing,
 	SpecialCharacters,
 	SpecialCharactersArrows,
@@ -180,8 +179,8 @@ Editor.defaultConfig = {
 			'heading',
 			'|',
 			'link',
-			'imageInsert',
 			'imageUpload',
+			'imageInsert',
 			'mediaEmbed',
 			'|',
 			'findAndReplace',
@@ -190,8 +189,8 @@ Editor.defaultConfig = {
 			'-',
 			'|',
 			'bold',
-			'underline',
 			'italic',
+			'underline',
 			'strikethrough',
 			'|',
 			'superscript',
