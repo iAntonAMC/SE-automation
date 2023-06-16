@@ -11,4 +11,3 @@ DecoupledDocumentEditor
         console.error( 'There was a problem loading the editor build' );
         console.error( error );
     } );
-
