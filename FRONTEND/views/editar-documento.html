@@ -14,8 +14,10 @@
     <!-- Editor lib CDN -->
     <script src="/static/ckeditor5-38.0.1/build/ckeditor.js"></script>
 
+    <!-- JS Functionality -->
     <script src="/static/js/config.js"></script>
     <script src="/static/js/get_one_doc.js"></script>
+    <script src="/static/js/update_doc.js"></script>
 
     <title>UFD EDITOR</title>
 </head>
@@ -23,25 +25,38 @@
     <nav class="top-orange-bar">
         <span class="ufd-text" onclick="window.location.href = '/'">UFD</span>
         <input class="new-title" type="text" id="doc_title" value="Documento 1">
-        <button class="save-btn" type="button" onclick="saveDoc()">Guardar Documento</button>
+        <button class="save-btn" type="button" onclick="updateDoc()">Guardar Documento</button>
     </nav>
     <div class="options-container">
         <div class="doc-options">
             <label for="doc_type">Tipo Documento</label>
             <select id="doc_type">
-                <option value="2">Reglamentos</option>
-                <option value="3">Anuencia</option>
+                <option value="3">Hoja Informativa de Inscripciones</option>
+                <option value="4">Hoja Informativa de Reinscripciones</option>
+                <option value="5">Solicitud de Inscripción</option>
+                <option value="6">Solicitud de Reinscripción</option>
+                <option value="8">Anuencia de Formación y Participación Deportiva</option>
+                <option value="16">Solicitud de Reinscripción</option>
+                <option value="20">Hoja Informativa de Reinscripciones con Pase Directo</option>
+                <option value="23">Guías de Reinscripción</option>
+                <option value="25">Consentimiento Médico</option>
             </select>
             <label for="doc_level">Nivel</label>
             <select id="doc_level">
                 <option value="1">Preescolar</option>
                 <option value="2">Primaria</option>
                 <option value="3">Secundaria</option>
+                <option value="4">Preparatoria</option>
+                <option value="5">Técnico Superior Universitario</option>
+                <option value="6">Licenciatura</option>
+                <option value="7">Maestría</option>
+                <option value="8">Doctorado</option>
             </select>
             <label for="doc_calendar">Calendario</label>
             <select id="doc_calendar">
                 <option value="Enero - Abril 2023">Enero - Abril 2023</option>
                 <option value="Mayo - Agosto 2023">Mayo - Agosto 2023</option>
+                <option value="Septiembre - Diciembre 2023">Septiembre - Diciembre 2023</option>
             </select>
             <label for="doc_campus">Campus</label>
             <input type="radio" id="doc_campus" value="1">Campus Pachuca
@@ -66,6 +81,8 @@
     <script>
         document.body.onload = getDocData();
     </script>
+
+    <div class="doc-info" id="doc-info">Carácteres: 0 | Palabras: 0</div>
 
 </body>
 </html>
