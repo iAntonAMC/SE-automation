@@ -27,3 +27,20 @@ CREATE TABLE documents (
 CREATE INDEX id_tipo ON documents(id, TIPO_DOCTO);
 CREATE INDEX id_titulo ON documents(id, TITULO_DOCTO);
 CREATE INDEX id_nivel_calendario ON documents(id, CVE_NIVEL, CVE_CALENDARIO);
+
+
+-- Temporal saving table:
+--  This table is used to save the document while the user is editing it
+--  It could be not used if's not desired
+DROP TABLE IF EXISTS documents_temp;
+CREATE TABLE documents_temp (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    TIPO_DOCTO INTEGER NOT NULL,
+    TITULO_DOCTO TEXT(200) NOT NULL,
+    CUERPO_DOCTO TEXT NOT NULL,
+    PUBLICAR VARCHAR(2) NOT NULL,
+    CVE_NIVEL INTEGER NOT NULL,
+    CVE_CALENDARIO TEXT(100) NOT NULL,
+    CAMPUS INTEGER NOT NULL,
+    FECHA_REGISTRO TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)ENGINE=INNODB;
