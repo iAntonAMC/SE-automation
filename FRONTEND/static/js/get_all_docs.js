@@ -1,4 +1,3 @@
-
 function getDocs() {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", URL + "documentos");
@@ -38,12 +37,11 @@ function getDocs() {
 
                 // Cada campo redirige a una página HTML pasando el id_contacto como parámetro
                 td_ver.innerHTML = "<a href = 'http://localhost:8000/documentos/pdf/" + docs[i].id + "' target='_blank'> ⨀ Ver PDF </a>";
-                td_put.innerHTML = "<a href = 'editar-documento?=" + docs[i].id + "'> ⨁ Editar </a>";
-                // td_borrar.innerHTML = "<a href = 'delete.html?" + docs[i].id_contacto + "'> ⨂ Borrar </a>";
+                td_put.innerHTML = "<a href = '/views/editar-documento.html?id=" + docs[i].id + "'> ⨁ Editar </a>";
+
                 // Se añade cada elemnto al row que se está creando
                 tr.appendChild(td_ver);
                 tr.appendChild(td_put);
-                // tr.appendChild(td_borrar);
 
                 tbody.appendChild(tr);  // Se añade el row creado a la tabla del HTML
             }

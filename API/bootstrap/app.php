@@ -67,7 +67,7 @@ $app->configure('app');
 |
 */
 
-// Add a CORS Middleware:
+// Add CORS Middleware for all requests:
 $app->middleware([
     App\Http\Middleware\CORSMiddleware::class
 ]);

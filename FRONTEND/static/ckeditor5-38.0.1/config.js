@@ -4,7 +4,7 @@ DecoupledDocumentEditor
             placeholder: 'Aquí se construyen las ideas...',
             wordCount: {
                 onUpdate: stats => {
-                    // Prints the current content statistics.
+                    // Prints on console the current content statistics.
                     console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
                 }
             }

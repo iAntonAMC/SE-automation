@@ -32,5 +32,6 @@ function saveDoc() {
     xhr.onload = () => {
         const response = xhr.responseText;
         console.log(response);
+        alert(response);
     }
 }

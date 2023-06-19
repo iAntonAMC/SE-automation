@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- General banner, scrollbar and table views styles -->
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/index.css">
+
+    <!-- "Page" style -->
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/editor-style.css">
+
+    <!-- Editor lib CDN -->
+    <script src="/static/ckeditor5-38.0.1/build/ckeditor.js"></script>
+
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/get_one_doc.js"></script>
+
+    <title>UFD EDITOR</title>
+</head>
+<body>
+    <nav class="top-orange-bar">
+        <span class="ufd-text" onclick="window.location.href = '/'">UFD</span>
+        <input class="new-title" type="text" id="doc_title" value="Documento 1">
+        <button class="save-btn" type="button" onclick="saveDoc()">Guardar Documento</button>
+    </nav>
+    <div class="options-container">
+        <div class="doc-options">
+            <label for="doc_type">Tipo Documento</label>
+            <select id="doc_type">
+                <option value="2">Reglamentos</option>
+                <option value="3">Anuencia</option>
+            </select>
+            <label for="doc_level">Nivel</label>
+            <select id="doc_level">
+                <option value="1">Preescolar</option>
+                <option value="2">Primaria</option>
+                <option value="3">Secundaria</option>
+            </select>
+            <label for="doc_calendar">Calendario</label>
+            <select id="doc_calendar">
+                <option value="Enero - Abril 2023">Enero - Abril 2023</option>
+                <option value="Mayo - Agosto 2023">Mayo - Agosto 2023</option>
+            </select>
+            <label for="doc_campus">Campus</label>
+            <input type="radio" id="doc_campus" value="1">Campus Pachuca
+            <input type="radio" id="doc_campus" value="2">Campus León
+            <input type="checkbox" id="posted"><label for="posted">Publicar</label>
+        </div>
+    </div>
+
+    <!-- This is the container of the document editor -->
+    <div class="document-editor" id="document-editor">
+        <!-- Instance the toolbar above the editable body -->
+        <div class="document-editor__toolbar" id="document-editor__toolbar"></div>
+        <!-- This container is for styling the editable area -->
+        <div class="document-editor-container" id="document-editor-container">
+            <!-- Editable area -->
+            <div class="document-editor-container__editable" id="document-editor-container__editable">
+            </div>
+        </div>
+    </div>
+    <!-- Call the editor.js config -->
+    <script src="/static/ckeditor5-38.0.1/config.js"></script>
+    <script>
+        document.body.onload = getDocData();
+    </script>
+
+</body>
+</html>
