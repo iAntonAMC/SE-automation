@@ -8,20 +8,23 @@
 # ROOT
 $router->get('/', ['uses'=>'DocumentsController@APICheck']);
 
-#GET ALL
+# GET ALL
 $router->get('/documentos', ['uses'=>'DocumentsController@GetAllDocuments']);
 
-#GET ONE
+# GET ONE
 $router->get('/documentos/{id}', ['uses'=>'DocumentsController@GetDocumentById']);
 
-#POST ONE
+# POST ONE
 $router->post('/documentos', ['uses' => 'DocumentsController@CreateNewDocument']);
 
-#UPDATE ONE
+# UPDATE ONE
 $router->post('/documentos/actualizar', ['uses' => 'DocumentsController@UpdateDocument']);
 
-#DELETE ONE
+# DELETE ONE
 $router->delete('/documentos/{id}', ['uses' => 'DocumentsController@DeleteDocument']);
 
-#GET PDF BUILD
+# GET PDF BUILD
 $router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF']);
+
+# AUTOSAVE
+$router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);

@@ -7,8 +7,8 @@ CREATE TABLE catalogo (
 
 
 -- Table DOCUMENTS it's similar to current table, however this one uses the 'CUERPO_DOCTO' column
-DROP TABLE IF EXISTS documents;
-CREATE TABLE documents (
+DROP TABLE IF EXISTS Documents;
+CREATE TABLE Documents (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     TIPO_DOCTO INTEGER NOT NULL,
     TITULO_DOCTO TEXT(200) NOT NULL,
@@ -24,16 +24,16 @@ CREATE TABLE documents (
     FOREIGN KEY (TIPO_DOCTO) REFERENCES catalogo(TIPO_DOCTO)
 )ENGINE=INNODB;
 
-CREATE INDEX id_tipo ON documents(id, TIPO_DOCTO);
-CREATE INDEX id_titulo ON documents(id, TITULO_DOCTO);
-CREATE INDEX id_nivel_calendario ON documents(id, CVE_NIVEL, CVE_CALENDARIO);
+CREATE INDEX id_tipo ON Documents(id, TIPO_DOCTO);
+CREATE INDEX id_titulo ON Documents(id, TITULO_DOCTO);
+CREATE INDEX id_nivel_calendario ON Documents(id, CVE_NIVEL, CVE_CALENDARIO);
 
 
 -- Temporal saving table:
 --  This table is used to save the document while the user is editing it
 --  It could be not used if's not desired
-DROP TABLE IF EXISTS documents_temp;
-CREATE TABLE documents_temp (
+DROP TABLE IF EXISTS Temporal_Saves;
+CREATE TABLE Temporal_Saves (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     TIPO_DOCTO INTEGER NOT NULL,
     TITULO_DOCTO TEXT(200) NOT NULL,
