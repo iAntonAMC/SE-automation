@@ -1,15 +1,13 @@
 DecoupledDocumentEditor
-    .create( document.querySelector( '#document-editor-container__editable' ),
-        {
-            placeholder: 'Aquí se construyen las ideas...',
-            autosave: {
-                waitingTime: 500,
-                save( editor ){
-                    return autoSave(editor.getData());
-                }
+    .create( document.querySelector( '#document-editor-container__editable' ), {
+        placeholder: 'Redacte su documento aquí...',
+        autosave: {
+            waitingTime: 500,
+            save( editor ){
+                return autoSave(editor.getData());
             }
         }
-    )
+    } )
     .then( editor => {
         window.editor = editor;
 
@@ -19,9 +17,12 @@ DecoupledDocumentEditor
 
         // Update document word count on editor change
         editor.plugins.get( 'WordCount' ).on( 'update', ( evt, stats ) => {
-            const doc_info = document.getElementById("doc-info");
+            const doc_info = document.getElementById("characters-count");
             doc_info.innerHTML = `Carácteres: ${ stats.characters } | Palabras: ${ stats.words }`;
         } );
+
+        // Show autosave document progress
+        displayStatus( editor );
     } )
     .catch( error => {
         console.error( 'There was a problem loading the editor build' );
@@ -32,6 +33,9 @@ DecoupledDocumentEditor
 function autoSave(data) {
     return new Promise( resolve => {
         setTimeout( () => {
+            const status = document.getElementById("editor-status");
+            status.innerHTML = "Guardando...";
+
             const xhr = new XMLHttpRequest();
 
             xhr.open("POST", URL + "documentos/autosave");
@@ -60,8 +64,9 @@ function autoSave(data) {
             xhr.send(JSON.stringify(documento));
 
             xhr.onload = () => {
-                const response = xhr.responseText;
-                console.log(response, data);
+                const response = xhr.responseText + ' ' + data;
+                console.log(response);
+                status.innerHTML = "Guardado";
             }
 
             resolve();

@@ -88,6 +88,8 @@ body {
     display: flex;
     margin: 0;
     padding: 5px;
-    background-color: var(--ck-color-toolbar-border);
+    background-color: rgb(235, 235, 235);
     height: 20px;
+    justify-content: space-between;
+    flex-direction: row;
 }
