@@ -28,3 +28,6 @@ $router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF'])
 
 # AUTOSAVE
 $router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);
+
+# IMAGE SAVING
+$router->post('/documentos/imagenes', ['uses' => 'DocumentsController@SaveImage']);

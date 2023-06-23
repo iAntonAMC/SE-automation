@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Documents;
 use App\Models\TemporalSaves;
+use App\Models\Images;
 use Illuminate\Http\Request;
 use Exception;
 use Dompdf\Dompdf;
@@ -370,6 +371,37 @@ class DocumentsController extends Controller
             }
             else {
                 return response()->json(['Error!' => 'Couldnt update doc'], 400);
+            }
+        }
+        catch (Exception $E)
+        {
+            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+        }
+    }
+
+
+    /****************************************
+     * Saves the image in the editor.
+     *
+     * @param object $request
+     * @return JSON $response
+    ****************************************/
+    public function SaveImage(Request $request)
+    {
+        try
+        {
+            $inserted = Images::create(
+                [
+                    'IMAGE' => $request->$_FILES['image']['tmp_name']
+                ]
+            );
+
+            //Verify if Doc was successfully inserted
+            if ($inserted) {
+                return response()->json(['Success!' => 'Image saved to DB'], 200);
+            }
+            else {
+                return response()->json(['Error!' => 'Couldnt save image'], 400);
             }
         }
         catch (Exception $E)

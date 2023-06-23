@@ -6,6 +6,20 @@ DecoupledDocumentEditor
             save( editor ){
                 return autoSave(editor.getData());
             }
+        },
+        // Simple image uploader
+        simpleUpload: {
+            // The URL that the images are uploaded to.
+            uploadUrl: URL + 'documentos/imagenes',
+
+            // Enable the XMLHttpRequest.withCredentials property.
+            withCredentials: true,
+
+            // Headers sent along with the XMLHttpRequest to the upload server.
+            headers: {
+                'Content-type': 'image/jpg',
+                'X-CSRF-TOKEN': 'CSRF-Token'
+            }
         }
     } )
     .then( editor => {
@@ -20,9 +34,6 @@ DecoupledDocumentEditor
             const doc_info = document.getElementById("characters-count");
             doc_info.innerHTML = `Carácteres: ${ stats.characters } | Palabras: ${ stats.words }`;
         } );
-
-        // Show autosave document progress
-        displayStatus( editor );
     } )
     .catch( error => {
         console.error( 'There was a problem loading the editor build' );
@@ -30,7 +41,7 @@ DecoupledDocumentEditor
     } );
 
 
-function autoSave(data) {
+function autoSave( data ) {
     return new Promise( resolve => {
         setTimeout( () => {
             const status = document.getElementById("editor-status");
