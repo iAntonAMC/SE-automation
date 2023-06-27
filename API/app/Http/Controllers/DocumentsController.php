@@ -396,7 +396,7 @@ class DocumentsController extends Controller
                 ]
             );
 
-            //Verify if Doc was successfully inserted
+            // Verify if Image was successfully saved
             if ($inserted) {
                 return response()->json(['Success!' => 'Image saved to DB'], 200);
             }
