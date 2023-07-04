@@ -7,7 +7,7 @@ DecoupledDocumentEditor
                 return autoSave(editor.getData());
             }
         },
-        // Simple image uploader
+        // Image uploader
         simpleUpload: {
             // The URL that the images are uploaded to.
             uploadUrl: URL + 'documentos/imagenes',
@@ -41,6 +41,12 @@ DecoupledDocumentEditor
     } );
 
 
+    /****************************************
+    * Autosave document progress into db
+    *
+    * @param data
+    * @return any
+    ****************************************/
 function autoSave( data ) {
     return new Promise( resolve => {
         setTimeout( () => {
@@ -50,7 +56,6 @@ function autoSave( data ) {
             const xhr = new XMLHttpRequest();
 
             xhr.open("POST", URL + "documentos/autosave");
-        
             xhr.setRequestHeader("Accept", "application/json");
             xhr.setRequestHeader("Content-type", "application/json");
 
@@ -81,6 +86,8 @@ function autoSave( data ) {
             }
 
             resolve();
-        }, 500 );
+        },
+        // Autosave waiting time in milliseconds
+        500 );
     } );
 }
