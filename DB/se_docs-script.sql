@@ -29,8 +29,8 @@ CREATE INDEX id_nivel_calendario ON documents(id, CVE_NIVEL, CVE_CALENDARIO);
 
 
 -- Temporal saving table:
---  This table is used to save the document while the user is editing it
---  It could be not used if's not desired
+---- This table is used to save the document while the user is editing it
+----  It could be not used if's not desired
 DROP TABLE IF EXISTS temporal_saves;
 CREATE TABLE temporal_saves (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -46,9 +46,9 @@ CREATE TABLE temporal_saves (
 
 
 -- Image manager table
-CREATE TABLE images (
-    id INTEGER(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE doc_imgs (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     TITULO_IMG VARCHAR(100),
-    CUERPO_IMG LONGBLOB NOT NULL,
+    RUTA_IMG VARCHAR(100) NOT NULL,
     FECHA_SUBIDA DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=INNODB;

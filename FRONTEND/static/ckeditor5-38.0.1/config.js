@@ -29,10 +29,10 @@ DecoupledDocumentEditor
 
         toolbarContainer.appendChild( editor.ui.view.toolbar.element );
 
-        // Update document word count on editor change
+        // Update document word count on editor changes
         editor.plugins.get( 'WordCount' ).on( 'update', ( evt, stats ) => {
-            const doc_info = document.getElementById("characters-count");
-            doc_info.innerHTML = `Carácteres: ${ stats.characters } | Palabras: ${ stats.words }`;
+            const wcount = document.getElementById("characters-count");
+            wcount.innerHTML = `Carácteres: ${ stats.characters } | Palabras: ${ stats.words }`;
         } );
     } )
     .catch( error => {
@@ -41,12 +41,12 @@ DecoupledDocumentEditor
     } );
 
 
-    /****************************************
-    * Autosave document progress into db
-    *
-    * @param data
-    * @return any
-    ****************************************/
+/****************************************
+* Autosave document progress into db
+*
+* @param data
+* @return any
+****************************************/
 function autoSave( data ) {
     return new Promise( resolve => {
         setTimeout( () => {
@@ -80,9 +80,9 @@ function autoSave( data ) {
             xhr.send(JSON.stringify(documento));
 
             xhr.onload = () => {
-                const response = xhr.responseText + ' ' + data;
+                const response = xhr.responseText + ' : ' + data;
                 console.log(response);
-                status.innerHTML = "Guardado";
+                status.innerHTML = "Guardado.";
             }
 
             resolve();
