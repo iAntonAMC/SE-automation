@@ -29,5 +29,5 @@ $router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF'])
 # AUTOSAVE
 $router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);
 
-# IMAGE SAVING
+# IMAGE UPLOADING
 $router->post('/documentos/imagenes', ['uses' => 'DocumentsController@SaveImage']);
