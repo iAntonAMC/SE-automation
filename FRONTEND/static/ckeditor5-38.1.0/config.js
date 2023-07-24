@@ -86,11 +86,10 @@ function autoSave( data ) {
             xhr.send(JSON.stringify(documento));
 
             xhr.onload = () => {
-                var csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)_token\s*=\s*([^;]*).*$)|^.*$/, "$1")
+                // var csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)_token\s*=\s*([^;]*).*$)|^.*$/, "$1");
                 const response = xhr.responseText + ' : ' + data;
                 console.log(response);
                 status.innerHTML = "Guardado.";
-                console.log(csrfToken);
             }
 
             resolve();

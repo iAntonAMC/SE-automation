@@ -75,7 +75,7 @@ $app->middleware([
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'csrf' => App\Http\Middleware\VerifyCsrfToken::class,
+    //'csrf' => App\Http\Middleware\VerifyCsrfToken::class,
 ]);
 
 /*
