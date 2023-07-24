@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Documents;
 use App\Models\TemporalSaves;
-use App\Models\Doc_Imgs;
 use Illuminate\Http\Request;
 use Exception;
 use Dompdf\Dompdf;
@@ -42,7 +41,7 @@ class DocumentsController extends Controller
         }
         catch (Exception $E)
         {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@GetAllDocuments Dropped an Exception -> ' . $E], 400);
         }
     }
 
@@ -68,7 +67,7 @@ class DocumentsController extends Controller
         }
         catch (Exception $E)
         {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@GetDocumentById Dropped an Exception -> ' . $E], 400);
         }
     }
 
@@ -105,7 +104,7 @@ class DocumentsController extends Controller
         }
         catch (Exception $E)
         {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@CreateNewDocument Dropped an Exception -> ' . $E], 400);
         }
     }
 
@@ -142,7 +141,7 @@ class DocumentsController extends Controller
         }
         catch (Exception $E)
         {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@UpdateDocument Dropped an Exception -> ' . $E], 400);
         }
     }
 
@@ -165,7 +164,7 @@ class DocumentsController extends Controller
             }
         }
         catch (Exception $E) {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@DeleteDocument Dropped an Exception -> ' . $E], 400);
         }
     }
 
@@ -200,7 +199,7 @@ class DocumentsController extends Controller
             return $dompdf->stream("Documento.pdf", ['Attachment' => 0, 'compress' => 0]);
         }
         catch (Exception $E) {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@BuildPDF Dropped an Exception -> ' . $E], 400);
         }
     }
 
@@ -237,53 +236,7 @@ class DocumentsController extends Controller
         }
         catch (Exception $E)
         {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
-        }
-    }
-
-
-    /****************************************
-     * Saves images uploaded on editor.
-     *
-     * @param object $request
-     * @return JSON $response
-    ****************************************/
-    public function SaveImage(Request $request)
-    {
-        try
-        {
-            $imgname = $request->file('upload');
-
-            move_uploaded_file($imgname, 'storage/app/public/images/'.$imgname);
-
-            #$imgname->move('storage/app/public/images/', $imgname);
-            print_r($imgname);
-
-            return response()->json(['Done!' => 'Inserted: ' . $imgname], 200);
-            // $inserted = Doc_Imgs::create(
-            //     [
-            //         'TITULO_IMG' => $title,
-            //         'RUTA_IMG' => 'storage/app/public/images/' . $title
-            //     ]
-            // );
-
-            // //Verify if Doc was successfully inserted
-            // if ($inserted) {
-            //     return [
-            //         'success' => 1,
-            //         'file' => [
-            //             'url' => 'storage/app/public/images/' . $title,
-            //             'title' => $title
-            //         ]
-            //     ];
-            // }
-            // else {
-            //     return response()->json(['Error!' => 'Couldnt insert new image into DB'], 400);
-            // }
-        }
-        catch (Exception $E)
-        {
-            return response()->json(['Error!' => __FILE__.' Dropped an Exception -> ' . $E], 400);
+            return response()->json(['Error!' => __FILE__.'@AutoSave Dropped an Exception -> ' . $E], 400);
         }
     }
 }

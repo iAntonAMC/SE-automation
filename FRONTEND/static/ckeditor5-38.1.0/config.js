@@ -1,22 +1,28 @@
 DecoupledDocumentEditor
-    .create( document.querySelector( '#document-editor-container__editable' ), {
+    .create( document.querySelector( '#document-editor-container__editable' ),
+    {
+        // Display text before editing
         placeholder: 'Redacte su documento aquí...',
+
+        // Save document progress into db
         autosave: {
-            waitingTime: 500,
+            waitingTime: 500, // in ms.
             save( editor ){
                 return autoSave(editor.getData());
             }
         },
-        // Image uploader
+
+        // Upload images to server
         simpleUpload: {
-            // The URL that the images are uploaded to.
+            // The API URL that the images are uploaded to.
             uploadUrl: URL + 'documentos/imagenes',
 
             // Enable the XMLHttpRequest.withCredentials property.
-            withCredentials: false,
+            withCredentials: true,
 
             // Headers sent along with the XMLHttpRequest to the upload server.
             headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('value'),
                 'Content-type': 'image/jpg, image/jpeg, image/png',
                 'Accept': 'application/json'
             }
@@ -29,7 +35,7 @@ DecoupledDocumentEditor
 
         toolbarContainer.appendChild( editor.ui.view.toolbar.element );
 
-        // Update document word count on editor changes
+        // Word count on editor updates
         editor.plugins.get( 'WordCount' ).on( 'update', ( evt, stats ) => {
             const wcount = document.getElementById("characters-count");
             wcount.innerHTML = `Carácteres: ${ stats.characters } | Palabras: ${ stats.words }`;
@@ -80,14 +86,16 @@ function autoSave( data ) {
             xhr.send(JSON.stringify(documento));
 
             xhr.onload = () => {
+                var csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)_token\s*=\s*([^;]*).*$)|^.*$/, "$1")
                 const response = xhr.responseText + ' : ' + data;
                 console.log(response);
                 status.innerHTML = "Guardado.";
+                console.log(csrfToken);
             }
 
             resolve();
         },
-        // Autosave waiting time in milliseconds
+        // Waiting time in milliseconds
         500 );
     } );
 }

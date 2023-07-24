@@ -27,7 +27,7 @@ $router->delete('/documentos/{id}', ['uses' => 'DocumentsController@DeleteDocume
 $router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF']);
 
 # AUTOSAVE
-$router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);
+$router->post('/documentos/autosave', ['middleware' => 'csrf', 'uses' => 'DocumentsController@AutoSave']);
 
 # IMAGE UPLOADING
-$router->post('/documentos/imagenes', ['uses' => 'DocumentsController@SaveImage']);
+$router->post('/documentos/imagenes', ['middleware' => 'csrf', 'uses' => 'ImageController@upload']);

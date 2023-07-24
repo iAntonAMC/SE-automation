@@ -72,9 +72,11 @@ $app->middleware([
     App\Http\Middleware\CORSMiddleware::class
 ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+    'csrf' => App\Http\Middleware\VerifyCsrfToken::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
