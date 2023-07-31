@@ -12,7 +12,7 @@ function getDocData() {
     xhr.onload = () => {
         const response = xhr.responseText;
         const doc_body = JSON.parse(response);
-        console.log(doc_body[0]);
+        console.log(doc_body);
 
         if (xhr.status == 200) {
             var titulo = document.getElementById("doc_title");
@@ -21,14 +21,14 @@ function getDocData() {
             var calendar = document.getElementById("doc_calendar");
             var campus = document.getElementById("doc_campus");
             var posted = document.getElementById("posted");
-            var cuerpo = doc_body[0]["CUERPO_DOCTO"];
+            var cuerpo = doc_body["CUERPO_DOCTO"];
 
-            titulo.value = doc_body[0]["TITULO_DOCTO"];
-            tipo.value = doc_body[0]["TIPO_DOCTO"];
-            nivel.value = doc_body[0]["CVE_NIVEL"];
-            calendar.value = doc_body[0]["CVE_CALENDARIO"];
-            campus.value = doc_body[0]["CAMPUS"];
-            if (doc_body[0]["PUBLICAR"] == "S") {
+            titulo.value = doc_body["TITULO_DOCTO"];
+            tipo.value = doc_body["TIPO_DOCTO"];
+            nivel.value = doc_body["CVE_NIVEL"];
+            calendar.value = doc_body["CVE_CALENDARIO"];
+            campus.value = doc_body["CAMPUS"];
+            if (doc_body["PUBLICAR"] == "S") {
                 posted.checked = true;
             }
             editor.setData(cuerpo);

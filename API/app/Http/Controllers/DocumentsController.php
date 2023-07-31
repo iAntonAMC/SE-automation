@@ -55,7 +55,7 @@ class DocumentsController extends Controller
     {
         try
         {
-            $document = Documents::all()->where('id', $id);
+            $document = Documents::find($id);
 
             // Verify if $documents is not null
             if ($document == '[]') {
