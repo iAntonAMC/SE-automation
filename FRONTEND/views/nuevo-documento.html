@@ -28,41 +28,54 @@
         <button class="save-btn" type="button" onclick="saveDoc()">Guardar Documento</button>
     </nav>
     <div class="options-container">
-        <div class="doc-options">
-            <label for="doc_type">Tipo Documento</label>
-            <select id="doc_type">
-                <option value="3">Hoja Informativa de Inscripciones</option>
-                <option value="4">Hoja Informativa de Reinscripciones</option>
-                <option value="5">Solicitud de Inscripción</option>
-                <option value="6">Solicitud de Reinscripción</option>
-                <option value="8">Anuencia de Formación y Participación Deportiva</option>
-                <option value="16">Solicitud de Reinscripción</option>
-                <option value="20">Hoja Informativa de Reinscripciones con Pase Directo</option>
-                <option value="23">Guías de Reinscripción</option>
-                <option value="25">Consentimiento Médico</option>
-            </select>
-            <label for="doc_level">Nivel</label>
-            <select id="doc_level">
-                <option value="1">Preescolar</option>
-                <option value="2">Primaria</option>
-                <option value="3">Secundaria</option>
-                <option value="4">Preparatoria</option>
-                <option value="5">Técnico Superior Universitario</option>
-                <option value="6">Licenciatura</option>
-                <option value="7">Maestría</option>
-                <option value="8">Doctorado</option>
-            </select>
-            <label for="doc_calendar">Calendario</label>
-            <select id="doc_calendar">
-                <option value="Enero - Abril 2023">Enero - Abril 2023</option>
-                <option value="Mayo - Agosto 2023">Mayo - Agosto 2023</option>
-                <option value="Septiembre - Diciembre 2023">Septiembre - Diciembre 2023</option>
-            </select>
-            <input type="radio" id="doc_campus" value="1">Campus Pachuca
-            <input type="radio" id="doc_campus" value="2">Campus León
-            <input type="checkbox" id="posted"><label for="posted">Publicar</label>
+        <div class="options-container">
+            <div class="doc-options">
+
+                <!-- Document Type -->
+                <label for="doc_type">Tipo Documento</label>
+                <select id="doc_type">
+                    <option value="3">Hoja Informativa de Inscripciones</option>
+                    <option value="4">Hoja Informativa de Reinscripciones</option>
+                    <option value="5">Solicitud de Inscripción</option>
+                    <option value="6">Solicitud de Reinscripción</option>
+                    <option value="8">Anuencia de Formación y Participación Deportiva</option>
+                    <option value="16">Solicitud de Reinscripción</option>
+                    <option value="20">Hoja Informativa de Reinscripciones con Pase Directo</option>
+                    <option value="23">Guías de Reinscripción</option>
+                    <option value="25">Consentimiento Médico</option>
+                </select>
+    
+                <!-- Document Level -->
+                <label for="doc_level">Nivel</label>
+                <select id="doc_level">
+                    <option value="0">Documento General</option>
+                    <option value="1">Preescolar</option>
+                    <option value="2">Primaria</option>
+                    <option value="3">Secundaria</option>
+                    <option value="4">Preparatoria</option>
+                    <option value="5">Técnico Superior Universitario</option>
+                    <option value="6">Licenciatura</option>
+                    <option value="7">Maestría</option>
+                    <option value="8">Doctorado</option>
+                </select>
+    
+                <!-- Document Calendar -->
+                <label for="doc_calendar">Calendario</label>
+                <select id="doc_calendar">
+                    <option value="Enero - Abril 2023">Enero - Abril 2023</option>
+                    <option value="Mayo - Agosto 2023">Mayo - Agosto 2023</option>
+                    <option value="Septiembre - Diciembre 2023">Septiembre - Diciembre 2023</option>
+                </select>
+    
+                <!-- Document Campus -->
+                <label for="doc_campus">Campus</label>
+                <input type="radio" id="doc_campus" value="1">Campus Pachuca
+                <input type="radio" id="doc_campus" value="2">Campus León
+    
+                <!-- Document Status -->
+                <input type="checkbox" id="posted"><label for="posted">Publicar</label>
+            </div>
         </div>
-    </div>
 
     <!-- This is the container of the document editor -->
     <div class="document-editor" id="document-editor">

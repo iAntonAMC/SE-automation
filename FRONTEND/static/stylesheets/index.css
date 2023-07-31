@@ -55,8 +55,21 @@ body {
     display: flex;
     height: 3%;
     width: 3%;
+    min-width: 30px;
     margin-left: 2%;
     margin-right: -65%;
+}
+
+.index-title {
+    display: flex;
+    margin-left: 110px;
+}
+
+@media screen and (max-width: 800px) {
+    .index-title {
+        display: flex;
+        margin-left: 200px;
+    }
 }
 
 /* The options sections */

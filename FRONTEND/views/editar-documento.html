@@ -25,11 +25,15 @@
 <body>
     <nav class="top-orange-bar">
         <span class="ufd-text" onclick="window.location.href = '/'">UFD</span>
-        <input class="new-title" type="text" id="doc_title" value="Documento 1">
+
+        <!-- Document Title -->
+        <input class="new-title" type="text" id="doc_title">
         <button class="save-btn" type="button" onclick="updateDoc()">Guardar Documento</button>
     </nav>
     <div class="options-container">
         <div class="doc-options">
+
+            <!-- Document Type -->
             <label for="doc_type">Tipo Documento</label>
             <select id="doc_type">
                 <option value="3">Hoja Informativa de Inscripciones</option>
@@ -42,8 +46,11 @@
                 <option value="23">Guías de Reinscripción</option>
                 <option value="25">Consentimiento Médico</option>
             </select>
+
+            <!-- Document Level -->
             <label for="doc_level">Nivel</label>
             <select id="doc_level">
+                <option value="0">Documento General</option>
                 <option value="1">Preescolar</option>
                 <option value="2">Primaria</option>
                 <option value="3">Secundaria</option>
@@ -53,15 +60,21 @@
                 <option value="7">Maestría</option>
                 <option value="8">Doctorado</option>
             </select>
+
+            <!-- Document Calendar -->
             <label for="doc_calendar">Calendario</label>
             <select id="doc_calendar">
                 <option value="Enero - Abril 2023">Enero - Abril 2023</option>
                 <option value="Mayo - Agosto 2023">Mayo - Agosto 2023</option>
                 <option value="Septiembre - Diciembre 2023">Septiembre - Diciembre 2023</option>
             </select>
+
+            <!-- Document Campus -->
             <label for="doc_campus">Campus</label>
             <input type="radio" id="doc_campus" value="1">Campus Pachuca
             <input type="radio" id="doc_campus" value="2">Campus León
+
+            <!-- Document Status -->
             <input type="checkbox" id="posted"><label for="posted">Publicar</label>
         </div>
     </div>
