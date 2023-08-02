@@ -19,7 +19,9 @@ class Documents extends Model
         'CVE_NIVEL',
         'CVE_CALENDARIO',
         'CAMPUS',
-        'AUTOR_REGISTRO'
+        'AUTOR_REGISTRO',
+        'FECHA_MODIFICACION',
+        'AUTOR_MODIFICACION'
     ];
 
     public $timestamps = false;

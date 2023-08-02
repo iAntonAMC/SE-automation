@@ -90,7 +90,9 @@ class DocumentsController extends Controller
                     'CVE_NIVEL' => $request->CVE_NIVEL,
                     'CVE_CALENDARIO' => $request->CVE_CALENDARIO,
                     'CAMPUS' => $request->CAMPUS,
-                    'AUTOR_REGISTRO' => $request->AUTOR_REGISTRO
+                    'AUTOR_REGISTRO' => $request->AUTOR_REGISTRO,
+                    'FECHA_MODIFICACION' => null,
+                    'AUTOR_MODIFICACION' => null
                 ]
             );
 
@@ -127,7 +129,8 @@ class DocumentsController extends Controller
                     'CVE_NIVEL' => $request->CVE_NIVEL,
                     'CVE_CALENDARIO' => $request->CVE_CALENDARIO,
                     'CAMPUS' => $request->CAMPUS,
-                    'AUTOR_REGISTRO' => $request->AUTOR_REGISTRO
+                    'FECHA_MODIFICACION' => $request->FECHA_MODIFICACION,
+                    'AUTOR_MODIFICACION' => $request->AUTOR_MODIFICACION
                 ]
             );
 
