@@ -7,7 +7,6 @@ function getDocs() {
     xhr.onload = () => {
         const response = xhr.responseText;
         const docs = JSON.parse(response);
-        console.log(docs);
 
         if (xhr.status == 200)
         {

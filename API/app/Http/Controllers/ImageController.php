@@ -17,11 +17,11 @@ class ImageController extends Controller
     {
         try
         {
-            $file = $request->file();
+            $file = $request->file('upload');
             if(isset($file))
             {
-                // $path = Storage::put('images', $file);
-                return ['url' => $file];
+                $name = $file->getClientOriginalName();
+                return ['url' => $name];
             }
             else
             {

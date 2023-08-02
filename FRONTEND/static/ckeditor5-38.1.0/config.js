@@ -14,7 +14,7 @@ DecoupledDocumentEditor
 
         // Upload images to server
         simpleUpload: {
-            // The API URL that the images are uploaded to.
+            // The API URL that the images are sent to.
             uploadUrl: URL + 'documentos/imagenes',
 
             // Enable the XMLHttpRequest.withCredentials property.
@@ -69,6 +69,12 @@ function autoSave( data ) {
             var doc_type = document.getElementById("doc_type").value;
             var doc_title = document.getElementById("doc_title").value;
             var doc_body = data;
+            var doc_publish = document.getElementById("posted");
+            var posted = "N";
+            if (doc_publish.checked == true)
+            {
+                posted = "S";
+            }
             var doc_level = document.getElementById("doc_level").value;
             var doc_calendar = document.getElementById("doc_calendar").value;
             var doc_campus = document.getElementById("doc_campus").value;
@@ -77,7 +83,7 @@ function autoSave( data ) {
                 TIPO_DOCTO: doc_type,
                 TITULO_DOCTO: doc_title,
                 CUERPO_DOCTO: doc_body,
-                PUBLICAR: "S",
+                PUBLICAR: posted,
                 CVE_NIVEL: doc_level,
                 CVE_CALENDARIO: doc_calendar,
                 CAMPUS: doc_campus,
@@ -87,7 +93,7 @@ function autoSave( data ) {
 
             xhr.onload = () => {
                 // var csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)_token\s*=\s*([^;]*).*$)|^.*$/, "$1");
-                const response = xhr.responseText + ' : ' + data;
+                const response = xhr.responseText
                 console.log(response);
                 status.innerHTML = "Guardado.";
             }

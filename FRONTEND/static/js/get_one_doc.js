@@ -12,7 +12,6 @@ function getDocData() {
     xhr.onload = () => {
         const response = xhr.responseText;
         const doc_body = JSON.parse(response);
-        console.log(doc_body);
 
         if (xhr.status == 200) {
             var titulo = document.getElementById("doc_title");

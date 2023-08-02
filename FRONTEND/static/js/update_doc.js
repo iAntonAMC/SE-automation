@@ -52,6 +52,8 @@ function updateDoc() {
     xhr.onload = () => {
         const response = xhr.responseText;
         console.log(response);
-        alert(response);
+
+        // Fire swal toast from swal_config.js
+        updatedToast();
     }
 }
