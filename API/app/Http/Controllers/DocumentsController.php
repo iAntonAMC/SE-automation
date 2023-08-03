@@ -225,6 +225,7 @@ class DocumentsController extends Controller
 
             // Get the template from DB
             $document = Documents::find($id);
+            $title = $document["TITULO_DOCTO"];
             $body = $document["CUERPO_DOCTO"];
 
             // Replace the placeholders with the data
@@ -250,7 +251,9 @@ class DocumentsController extends Controller
             // Render the HTML as PDF
             $dompdf->render();
 
-            $dompdf->stream("Documento.pdf", ['Attachment' => 0, 'compress' => 0]);
+            return $dompdf->stream($title, ['Attachment' => 0, 'compress' => 0]);
+
+            // return response()->json(['BUILT:' => $body], 200);
         }
         catch (Exception $E) {
             return response()->json(['Error!' => __FILE__.'@FillPDF Dropped an Exception -> ' . $E], 400);

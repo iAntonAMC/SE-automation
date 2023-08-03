@@ -27,7 +27,7 @@ $router->delete('/documentos/{id}', ['uses' => 'DocumentsController@DeleteDocume
 $router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF']);
 
 # GET PDF FILLED
-$router->post('/documentos/build-pdf/{id}', ['uses' => 'DocumentsController@FillPDF']);
+$router->post('/documentos/ver-pdf/{id}', ['uses' => 'DocumentsController@FillPDF']);
 
 # AUTOSAVE
 $router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);
