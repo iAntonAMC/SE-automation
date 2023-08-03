@@ -23,8 +23,11 @@ $router->post('/documentos/actualizar', ['uses' => 'DocumentsController@UpdateDo
 # DELETE ONE
 $router->delete('/documentos/{id}', ['uses' => 'DocumentsController@DeleteDocument']);
 
-# GET PDF BUILD
+# GET PDF PREVIEW
 $router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF']);
+
+# GET PDF FILLED
+$router->post('/documentos/build-pdf/{id}', ['uses' => 'DocumentsController@FillPDF']);
 
 # AUTOSAVE
 $router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);

@@ -7,6 +7,7 @@ use App\Models\TemporalSaves;
 use Illuminate\Http\Request;
 use Exception;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class DocumentsController extends Controller
 {
@@ -172,7 +173,7 @@ class DocumentsController extends Controller
     }
 
     /****************************************
-     * Build the PDF file specifying the $id
+     * Preview the PDF file specifying the doc $id
      *
      * @param int $id
      * @return callable $dompdf
@@ -182,13 +183,15 @@ class DocumentsController extends Controller
         try
         {
             $document = Documents::find($id);
-            //print_r($document["CUERPO_DOCTO"]);
+
             $body = $document["CUERPO_DOCTO"];
 
-            $dompdf = new Dompdf();
+            // DOMPDF configuration
+            $options = new Options();
+            $options->set('isHtml5ParserEnabled', true);
+            $options->set('isRemoteEnabled', true);
 
-            // pass an array of options
-            $dompdf->getOptions()->set([]);
+            $dompdf = new Dompdf($options);
 
             //Build the content body
             $dompdf->loadHtml($body);
@@ -199,10 +202,58 @@ class DocumentsController extends Controller
             // Render the HTML as PDF
             $dompdf->render();
 
-            return $dompdf->stream("Documento.pdf", ['Attachment' => 0, 'compress' => 0]);
+            $dompdf->stream("Documento.pdf", ['Attachment' => 0, 'compress' => 0]);
         }
         catch (Exception $E) {
             return response()->json(['Error!' => __FILE__.'@BuildPDF Dropped an Exception -> ' . $E], 400);
+        }
+    }
+
+    /****************************************
+     * Fill the PDF with portal data
+     *
+     * @param int $id
+     * @param object $request
+     * @return callable $dompdf
+    ****************************************/
+    public function FillPDF(Request $request, $id)
+    {
+        try
+        {
+            // Recieve the data from the request
+            $data = $request->all();
+
+            // Get the template from DB
+            $document = Documents::find($id);
+            $body = $document["CUERPO_DOCTO"];
+
+            // Replace the placeholders with the data
+            foreach ($data as $key => $value) {
+                if (strpos($body, '{{'.$key.'}}') !== false) {
+                    $body = str_replace('{{'.$key.'}}', $value, $body);
+                }
+            }
+
+            // DOMPDF configuration
+            $options = new Options();
+            $options->set('isHtml5ParserEnabled', true);
+            $options->set('isRemoteEnabled', true);
+
+            $dompdf = new Dompdf($options);
+
+            //Build the content body
+            $dompdf->loadHtml($body);
+
+            // (Optional) Setup the paper size and orientation
+            $dompdf->setPaper("A4","portrait");
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            $dompdf->stream("Documento.pdf", ['Attachment' => 0, 'compress' => 0]);
+        }
+        catch (Exception $E) {
+            return response()->json(['Error!' => __FILE__.'@FillPDF Dropped an Exception -> ' . $E], 400);
         }
     }
 
