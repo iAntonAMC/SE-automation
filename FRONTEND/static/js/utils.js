@@ -11,7 +11,7 @@ const URL = "http://localhost:8000/";
 function fillPDF(id) {
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", URL + "documentos/ver-pdf/" + id);
+    xhr.open("POST", URL + "documentos/pdf/" + id);
 
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-type", "application/json");

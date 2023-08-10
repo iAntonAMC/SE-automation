@@ -251,9 +251,24 @@ class DocumentsController extends Controller
             // Render the HTML as PDF
             $dompdf->render();
 
+            // $headers = [
+            //     'Access-Control-Allow-Origin'      => 'http://localhost:666',
+            //     'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS, PUT, DELETE',
+            //     'Access-Control-Allow-Credentials' => 'true',
+            //     'Access-Control-Max-Age'           => '86400',
+            //     'Access-Control-Allow-Headers'     => 'Accept, Content-Type, Authorization, X-Requested-With, X-CSRF-TOKEN',
+            //     'Allow'                            => 'POST, GET, OPTIONS, PUT, DELETE',
+            //     'Accept'                           => '*/*',
+            //     'Content-type'                     => 'application/json'
+            // ];
+            // if ($request->isMethod('POST'))
+            // {
+            //     return response()->json('{"done":"POST"}', 200, $headers);
+            // }
+
             return $dompdf->stream($title, ['Attachment' => 0, 'compress' => 0]);
 
-            // return response()->json(['BUILT:' => $body], 200);
+            // response()->json(['BUILT:' => $body], 200);
         }
         catch (Exception $E) {
             return response()->json(['Error!' => __FILE__.'@FillPDF Dropped an Exception -> ' . $E], 400);

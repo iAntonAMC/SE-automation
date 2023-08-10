@@ -36,10 +36,10 @@ function getDocs() {
                 var td_llenar = document.createElement("td");
 
                 // Cada campo redirige a una página HTML pasando el id_contacto como parámetro
-                td_ver.innerHTML = "<a href = 'http://localhost:8000/documentos/pdf/" + docs[i].id + "' target='_blank'> ⨀ Ver PDF </a>";
+                td_ver.innerHTML = "<a href = 'http://localhost:8000/documentos/preview/" + docs[i].id + "' target='_blank'> ⨀ Ver PDF </a>";
                 td_put.innerHTML = "<a href = '/views/editar-documento.html?id=" + docs[i].id + "'> ⨁ Editar </a>";
                 // td_borrar.innerHTML = "<a href = 'http://localhost:8000/documentos/" + docs[i].id + "'> ✘ Borrar </a>";
-                td_llenar.innerHTML = "<a href = '/views/documento-pdf.html?id=" + docs[i].id + "' target='_blank'> ⨀ Llenar PDF </a>";
+                td_llenar.innerHTML = "<button onclick='fillPDF(" + docs[i].id + ")'> ⨀ Llenar PDF </button>";
 
                 // Se añade cada elemnto al row que se está creando
                 tr.appendChild(td_ver);

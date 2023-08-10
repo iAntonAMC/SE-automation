@@ -24,10 +24,10 @@ $router->post('/documentos/actualizar', ['uses' => 'DocumentsController@UpdateDo
 $router->delete('/documentos/{id}', ['uses' => 'DocumentsController@DeleteDocument']);
 
 # GET PDF PREVIEW
-$router->get('/documentos/pdf/{id}', ['uses' => 'DocumentsController@BuildPDF']);
+$router->get('/documentos/preview/{id}', ['uses' => 'DocumentsController@BuildPDF']);
 
 # GET PDF FILLED
-$router->post('/documentos/ver-pdf/{id}', ['uses' => 'DocumentsController@FillPDF']);
+$router->post('/documentos/pdf/{id}', ['uses' => 'DocumentsController@FillPDF']);
 
 # AUTOSAVE
 $router->post('/documentos/autosave', ['uses' => 'DocumentsController@AutoSave']);
