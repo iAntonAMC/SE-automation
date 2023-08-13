@@ -11,7 +11,7 @@ const URL = "http://localhost:8000/";
 function fillPDF(id) {
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", URL + "documentos/pdf/" + id);
+    xhr.open("POST", URL + "documentos/fill/" + id);
 
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-type", "application/json");
@@ -52,7 +52,13 @@ function fillPDF(id) {
     xhr.send(JSON.stringify(data));
 
     xhr.onload = () => {
-        const response = xhr.responseText;
-        console.log(response);
+        console.log(xhr.responseText);
+        if (xhr.status == 200)
+        {
+            const response = xhr.responseText;
+            const doc = JSON.parse(response);
+            var title = doc.Name;
+            window.open(URL + "documentos/pdf/" + title, '_blank');
+        }
     }
 }

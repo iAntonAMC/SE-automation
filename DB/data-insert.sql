@@ -25,3 +25,6 @@ INSERT INTO documents (TIPO_DOCTO, TITULO_DOCTO, CUERPO_DOCTO, PUBLICAR, CVE_NIV
 
 INSERT INTO temporal_saves (TIPO_DOCTO, TITULO_DOCTO, CUERPO_DOCTO, PUBLICAR, CVE_NIVEL, CVE_CALENDARIO, CAMPUS) VALUES
     ('0', 'AutoSavePlaceHolder', '<p>AutoSave Placeholder</p>', 'N', '0', 'Mayo - Agosto 2023', '1');
+
+INSERT INTO pdfs (CUERPO_DOCTO) VALUES
+    ('<p>PDF filler Placeholder</p>');

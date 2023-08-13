@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Documents;
 use App\Models\TemporalSaves;
+use App\Models\PDFs;
 use Illuminate\Http\Request;
 use Exception;
 use Dompdf\Dompdf;
@@ -214,7 +215,7 @@ class DocumentsController extends Controller
      *
      * @param int $id
      * @param object $request
-     * @return callable $dompdf
+     * @return JSON $response
     ****************************************/
     public function FillPDF(Request $request, $id)
     {
@@ -235,45 +236,55 @@ class DocumentsController extends Controller
                 }
             }
 
-            // DOMPDF configuration
-            $options = new Options();
-            $options->set('isHtml5ParserEnabled', true);
-            $options->set('isRemoteEnabled', true);
-
-            $dompdf = new Dompdf($options);
-
-            //Build the content body
-            $dompdf->loadHtml($body);
-
-            // (Optional) Setup the paper size and orientation
-            $dompdf->setPaper("A4","portrait");
-
-            // Render the HTML as PDF
-            $dompdf->render();
-
-            // $headers = [
-            //     'Access-Control-Allow-Origin'      => 'http://localhost:666',
-            //     'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS, PUT, DELETE',
-            //     'Access-Control-Allow-Credentials' => 'true',
-            //     'Access-Control-Max-Age'           => '86400',
-            //     'Access-Control-Allow-Headers'     => 'Accept, Content-Type, Authorization, X-Requested-With, X-CSRF-TOKEN',
-            //     'Allow'                            => 'POST, GET, OPTIONS, PUT, DELETE',
-            //     'Accept'                           => '*/*',
-            //     'Content-type'                     => 'application/json'
-            // ];
-            // if ($request->isMethod('POST'))
-            // {
-            //     return response()->json('{"done":"POST"}', 200, $headers);
-            // }
-
-            return $dompdf->stream($title, ['Attachment' => 0, 'compress' => 0]);
-
-            // response()->json(['BUILT:' => $body], 200);
+            // Prepare PDF in DB
+            $id = pdfs::all('id');
+            $updated = pdfs::where('id', $id[0]['id'])->update(
+                [
+                    'CUERPO_DOCTO' => $body,
+                ]
+            );
+            if ($updated == 1) {
+                return response()->json(['Name' => $title, 'Content:' => $body], 200);
+            }
+            else {
+                return response()->json(['Error!' => 'Couldnt fill pdf content'], 400);
+            }
         }
         catch (Exception $E) {
             return response()->json(['Error!' => __FILE__.'@FillPDF Dropped an Exception -> ' . $E], 400);
         }
     }
+
+    /****************************************
+     * Print the PDF on screen
+     *
+     * @param str $doc
+     * @return callable $dompdf
+    ****************************************/
+    public function PrintPDF($doc)
+    {
+        $document = pdfs::all();
+        $body = $document[0]["CUERPO_DOCTO"];
+
+        // DOMPDF configuration
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+
+        //Build the content body
+        $dompdf->loadHtml($body);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper("A4","portrait");
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        $dompdf->stream($doc, ['Attachment' => 0, 'compress' => 0]);
+    }
+
 
     /****************************************
      * Saves the progress in the editor.
