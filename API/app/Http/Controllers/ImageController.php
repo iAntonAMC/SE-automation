@@ -16,11 +16,10 @@ class ImageController extends Controller
     {
         try
         {
-            $file = $request->file('upload');
+            $file = $request->file();
             if(isset($file))
             {
-                $name = $file->getClientOriginalName();
-                return ['url' => $name];
+                return ['url' => $file];
             }
             else
             {
